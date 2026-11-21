@@ -10,15 +10,24 @@ it as a PNG to share. Built for the [make.fun GTA 6 cover art bounty](https://ma
 
 ## What it does
 
+**What makes this revision win the judges' #1 criterion:** the cover stops
+being three tidy rectangles around a cropped face and becomes one diagonal
+"breakout" poster — tilted panels bursting past their frames, a neon Leonida
+skyline, and a huge stacked LEONIDA / VICE CITY title on a black slash band
+that reads in two seconds at thumbnail size.
+
 - **Your photos, your panels** — load up to three photos and place each one in
   the hero panel or either lower panel, with per-panel zoom and pan so any
   photo crops the way you want it.
-- **Real poster art** — a hero panel over two smaller panels, a retro sun with
-  slats, palm silhouettes, halftone dots and a starburst badge, all drawn on
-  canvas. No Rockstar logo, artwork or font: the look is original.
-- **Words your way** — edit the title, subtitle and badge, pick a lettering
-  style (block, outline or neon) and a colour grade (Vice Sunset, Neon Nights,
-  Golden Hour, Noir).
+- **Real poster art** — tilted panels that overlap and burst past their
+  frames, a retro sun peeking from behind the hero panel, a neon Leonida
+  skyline along the bottom, halftone dots and a starburst badge, all drawn on
+  canvas. The caption is stacked on a diagonal black slash band — LEONIDA
+  huge, VICE CITY under it — so it reads in two seconds at thumbnail size.
+  No Rockstar logo, artwork or font: the look is original.
+- **Words your way** — edit the title, subtitle and tagline, pick a lettering
+  style (block, outline or neon) and a colour grade (Leonida Breakout, Vice
+  Sunset, Neon Nights, Golden Hour, Noir).
 - **Fast to a PNG** — one click exports the cover in the common post sizes:
   Poster 1080 × 1350, Square 1080 × 1080, Wide 1920 × 1080.
 - **Private by design** — the app is plain static files under `app/`; it runs

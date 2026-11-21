@@ -2,6 +2,8 @@
 // can be tried locally without a build step: `node serve.ts` serves app/ on
 // http://localhost:8080. It refuses any path outside app/ and sends the MIME
 // types an offline web app needs. Development convenience only.
+// Leonida Breakout revision: unchanged behaviour — it serves whatever app/ holds,
+// now the tilted breakout poster.
 import { createReadStream, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';

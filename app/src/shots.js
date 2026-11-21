@@ -2,8 +2,8 @@
 // ?shot=cover shows the cover alone; ?shot=export runs the real export pipeline
 // and writes its PNG byte size into the page, so the export can be verified
 // without a download. `photo`, `photo2`, `photo3` pick the samples for slots
-// A, B and C; `size`, `grade`, `lettering`, `caption`, `subtitle` set the cover.
-// window.__shotReady is set once the scene is painted.
+// A, B and C; `size`, `grade`, `lettering`, `caption`, `subtitle`, `tagline`
+// set the cover. window.__shotReady is set once the scene is painted.
 import { renderCover } from './cover.js';
 
 export async function runShot(shot, query, state, loadSample, redraw) {
@@ -15,7 +15,7 @@ export async function runShot(shot, query, state, loadSample, redraw) {
     document.getElementById('size').value = size;
   }
   const grade = query.get('grade');
-  if (grade && ['sunset', 'neon', 'gold', 'noir'].includes(grade)) {
+  if (grade && ['breakout', 'sunset', 'neon', 'gold', 'noir'].includes(grade)) {
     state.grade = grade;
     document.getElementById('grade').value = grade;
   }
@@ -34,8 +34,28 @@ export async function runShot(shot, query, state, loadSample, redraw) {
     state.subtitle = subtitle;
     document.getElementById('subtitle').value = subtitle;
   }
+  const tagline = query.get('tagline');
+  if (tagline !== null) {
+    state.tagline = tagline;
+    document.getElementById('tagline').value = tagline;
+  }
+  // Per-panel crop for a scene: oy0/oy1/oy2 pan up-down, zoom0/zoom1/zoom2
+  // zoom. Portrait photos need oy near 1 in a landscape hero panel so the
+  // faces at the top of the photo stay in frame.
+  for (let i = 0; i < 3; i++) {
+    const oy = query.get(`oy${i}`);
+    if (oy !== null) {
+      state.panels[i].oy = Number(oy);
+      document.getElementById(`panel-oy-${i}`).value = oy;
+    }
+    const zoom = query.get(`zoom${i}`);
+    if (zoom !== null) {
+      state.panels[i].zoom = Number(zoom);
+      document.getElementById(`panel-zoom-${i}`).value = zoom;
+    }
+  }
 
-  const samples = [query.get('photo') ?? 'pier', query.get('photo2') ?? 'boulevard', query.get('photo3') ?? 'pier'];
+  const samples = [query.get('photo') ?? 'boulevard', query.get('photo2') ?? 'pier', query.get('photo3') ?? 'neon'];
   for (let slot = 0; slot < 3; slot++) {
     await loadSample(slot, samples[slot]);
   }

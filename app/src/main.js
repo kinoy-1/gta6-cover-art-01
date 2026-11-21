@@ -8,24 +8,25 @@ import { runShot } from './shots.js';
 const canvas = document.getElementById('cover');
 const status = document.getElementById('status');
 const previewNote = document.getElementById('preview-note');
-const SAMPLES = ['samples/boulevard.jpg', 'samples/pier.jpg', 'samples/boulevard.jpg'];
+const SAMPLES = ['samples/boulevard.jpg', 'samples/pier.jpg', 'samples/neon.jpg'];
 
 /** The editor's state; every control writes here, then redraw() paints it. */
 const state = {
   size: 'poster',
-  grade: 'sunset',
+  grade: 'breakout',
   lettering: 'block',
-  title: 'VICE SUNSET',
-  subtitle: 'One last ride down Ocean Drive',
+  title: 'LEONIDA',
+  subtitle: 'VICE CITY',
+  tagline: 'One last ride down Ocean Drive',
   badge: 'EST. 2026',
   showSun: true,
   showPalms: true,
   showHalftone: true,
   photos: [null, null, null],
   panels: [
-    { photo: 0, zoom: 1.15, ox: 0, oy: 0 },
-    { photo: 1, zoom: 1.2, ox: 0, oy: 0 },
-    { photo: 2, zoom: 1.2, ox: 0, oy: 0 },
+    { photo: 0, zoom: 1.15, ox: 0, oy: 0.85 },
+    { photo: 1, zoom: 1.05, ox: 0, oy: 0.7 },
+    { photo: 2, zoom: 1.25, ox: 0, oy: 0.55 },
   ],
 };
 
@@ -91,6 +92,7 @@ for (let i = 0; i < 3; i++) {
 
 document.getElementById('title').addEventListener('input', (e) => { state.title = e.target.value; redraw(); });
 document.getElementById('subtitle').addEventListener('input', (e) => { state.subtitle = e.target.value; redraw(); });
+document.getElementById('tagline').addEventListener('input', (e) => { state.tagline = e.target.value; redraw(); });
 document.getElementById('badge').addEventListener('input', (e) => { state.badge = e.target.value; redraw(); });
 document.getElementById('grade').addEventListener('change', (e) => { state.grade = e.target.value; redraw(); });
 document.getElementById('lettering').addEventListener('change', (e) => { state.lettering = e.target.value; redraw(); });

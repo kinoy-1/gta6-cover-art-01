@@ -6,6 +6,10 @@
 // screenshots/ from beside this file to /output and writes /output/dossier.json,
 // the summary the judge reads, with the vendored make.fun library.
 //
+// Leonida Breakout revision: the app it hands in is the tilted breakout poster
+// (tilted panels, neon skyline, stacked LEONIDA / VICE CITY title) — the hand-in
+// itself is unchanged, it still copies app/ + screenshots/ and writes the dossier.
+//
 // Serve it locally with `node serve.ts`, then open http://localhost:8080.
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
