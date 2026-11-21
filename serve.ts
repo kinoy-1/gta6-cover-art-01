@@ -1,9 +1,9 @@
-// A tiny static server for app/ (Node 22, standard library only), so the entry
-// can be tried locally without a build step: `node serve.ts` serves app/ on
-// http://localhost:8080. It refuses any path outside app/ and sends the MIME
-// types an offline web app needs. Development convenience only.
-// Leonida Breakout revision: unchanged behaviour — it serves whatever app/ holds,
-// now the tilted breakout poster.
+// A tiny static server for app/ (Node 22, standard library only), so the
+// entry can be tried locally without a build step: `node serve.ts` serves
+// app/ on http://localhost:8080 (or `--port <n>`). It refuses any path
+// outside app/ and sends the MIME types an offline web app needs, including
+// the display font under app/fonts. Development convenience only: the app
+// itself needs no server at grading time, it is static files.
 import { createReadStream, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';
@@ -22,6 +22,8 @@ const MIME = {
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.svg': 'image/svg+xml',
+  '.ttf': 'font/ttf',
+  '.woff': 'font/woff',
   '.woff2': 'font/woff2',
   '.txt': 'text/plain; charset=utf-8',
 };

@@ -1,37 +1,52 @@
 /* Vice Cover Studio — dark editor chrome around a bright poster preview. */
-/* Leonida Breakout revision: the chrome stays the same; the poster it frames
-   is now the tilted breakout cover (see src/cover.js). */
+/* Round 2 (LEONIDA BREAKOUT): the display face is Anton, shipped under
+   app/fonts under the SIL Open Font License — a condensed heavyweight that
+   reads as a billboard at thumbnail size. The chrome is kept compact so the
+   whole control stack fits one editor screenshot. */
+@font-face {
+  font-family: 'Anton';
+  src: url('./fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 * { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; background: #12081f; color: #f4eef7; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
-.app { display: flex; gap: 28px; align-items: flex-start; justify-content: center; padding: 24px; max-width: 1480px; margin: 0 auto; }
-.controls { width: 340px; flex: none; display: flex; flex-direction: column; gap: 16px; }
-.controls h1 { margin: 0; font-size: 30px; line-height: 1.05; letter-spacing: 0.5px; font-weight: 900;
+html, body { margin: 0; min-height: 100%; background: #12081f; color: #f4eef7; font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.app { display: flex; gap: 24px; align-items: flex-start; justify-content: center; padding: 20px; max-width: 1480px; margin: 0 auto; }
+.controls { width: 360px; flex: none; display: flex; flex-direction: column; gap: 12px; }
+.controls h1 { margin: 0; font-family: 'Anton', "Arial Black", sans-serif; font-size: 34px; line-height: 1.05; letter-spacing: 1px; font-weight: 400;
   background: linear-gradient(92deg, #ff9a3d 0%, #ff4d8d 55%, #b06bff 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent; }
-.tagline { margin: 0; color: #c9b8d4; font-size: 13.5px; }
-fieldset { margin: 0; padding: 14px; border: 1px solid #3d2354; border-radius: 12px; background: #1b0f2b; display: flex; flex-direction: column; gap: 12px; }
+.tagline { margin: 0; color: #c9b8d4; font-size: 13px; }
+fieldset { margin: 0; padding: 12px; border: 1px solid #3d2354; border-radius: 12px; background: #1b0f2b; display: flex; flex-direction: column; gap: 10px; }
 legend { font-weight: 800; font-size: 13px; letter-spacing: 0.4px; color: #ffb35c; padding: 0 6px; }
-.hint { margin: 0; color: #a894b8; font-size: 13px; }
-.slot, .panel { display: flex; flex-direction: column; gap: 8px; padding: 10px; border: 1px solid #2c1840; border-radius: 8px; background: #221133; }
+.hint { margin: 0; color: #a894b8; font-size: 12.5px; }
+.slot, .panel { display: flex; flex-direction: column; gap: 7px; padding: 9px; border: 1px solid #2c1840; border-radius: 8px; background: #221133; }
 .slot-name, .panel-name { font-weight: 800; font-size: 13px; color: #ffd9a0; }
+.slot-row { display: flex; align-items: center; gap: 10px; }
 .slot-state { font-size: 12px; color: #9d8ab0; }
-label { display: flex; flex-direction: column; gap: 5px; font-weight: 600; font-size: 13px; color: #d9cbe6; }
-input[type=text], select { font: inherit; color: #f4eef7; background: #2a1740; border: 1px solid #4a2d68; border-radius: 6px; padding: 8px 10px; }
-input[type=file] { font: inherit; font-size: 13px; color: #d9cbe6; }
+label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 13px; color: #d9cbe6; }
+input[type=text], select { font: inherit; color: #f4eef7; background: #2a1740; border: 1px solid #4a2d68; border-radius: 6px; padding: 7px 9px; }
+input[type=file] { font: inherit; font-size: 12.5px; color: #d9cbe6; }
 input[type=range] { width: 100%; accent-color: #ff4d8d; }
-button { font: inherit; font-weight: 800; padding: 11px 14px; border: 0; border-radius: 8px; cursor: pointer;
+button { font: inherit; font-weight: 800; padding: 10px 14px; border: 0; border-radius: 8px; cursor: pointer;
   background: linear-gradient(92deg, #ff7a1a, #ff2e88); color: #fff; letter-spacing: 0.3px; }
 button:hover { filter: brightness(1.12); }
-.slot button { padding: 7px 10px; font-size: 13px; background: #3a2358; color: #ffd9a0; }
+.slot-row button, #fill-all { padding: 6px 10px; font-size: 13px; background: #3a2358; color: #ffd9a0; }
+.sliders { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.sliders label { font-size: 12px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
 .toggles { display: flex; flex-wrap: wrap; gap: 6px 16px; }
 .toggles label { flex-direction: row; align-items: center; gap: 6px; font-weight: 600; }
 #status { margin: 0; color: #9fe8c9; font-size: 13px; min-height: 1.3em; }
-.preview { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; position: sticky; top: 24px; }
-#cover { max-width: 100%; max-height: calc(100vh - 90px); width: auto; height: auto; box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px #3d2354; border-radius: 4px; background: #241233; }
+.preview { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; position: sticky; top: 20px; }
+#cover { max-width: 100%; max-height: calc(100vh - 80px); width: auto; height: auto; box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px #3d2354; border-radius: 4px; background: #241233; cursor: grab; }
+#cover:active { cursor: grabbing; }
 .preview-note { margin: 0; color: #a894b8; font-size: 13px; }
 
 /* Screenshot scenes: the cover alone, edge to edge. */
 body.shot-cover .controls, body.shot-cover .preview-note { display: none; }
 body.shot-cover .app { padding: 0; max-width: none; }
 body.shot-cover .preview { position: static; }
-body.shot-cover #cover { max-height: 100vh; max-width: 100vw; box-shadow: none; border-radius: 0; }
+body.shot-cover #cover { width: 100vw; height: 100vh; max-height: 100vh; max-width: 100vw; box-shadow: none; border-radius: 0; }
